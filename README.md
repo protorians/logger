@@ -19,6 +19,7 @@ A minimal, typed logger for Node.js and ESM with timestamp formatting, colored l
   - [Example with an instance](#example-with-an-instance)
   - [Disable colors or timestamp](#disable-colors-or-timestamp)
 - [Events Bus integration](#events-bus-integration)
+- [Badges (LoggerBadge/LBadge)](#badges-loggerbadgelbadge)
 - [Formats and rendering](#formats-and-rendering)
 - [Best practices](#best-practices)
 - [License](#license)
@@ -157,6 +158,38 @@ The `key` depends on the level:
 | SILENT    | LOG_SILENT              |
 
 This lets you centralize or redirect logs to other targets (file, telemetry, etc.) by subscribing to the `@protorians/events-bus` package event bus.
+
+## Badges (LoggerBadge/LBadge)
+
+A small utility is provided to render colored "badges" for levels without printing a full log line. Useful for composing custom console outputs.
+
+- Named export: LoggerBadge
+- Alias export: LBadge
+
+Example:
+
+import { LoggerBadge, LBadge } from "@protorians/logger";
+
+console.log(
+  LoggerBadge.info("INFO"),
+  "Service started",
+  LBadge.done("OK")
+);
+
+Available methods (all return a colored string):
+
+| Method        | Description                 |
+|---------------|-----------------------------|
+| log(label)    | Colored badge for LOG       |
+| info(label)   | Colored badge for INFO      |
+| error(label)  | Colored badge for ERROR     |
+| warn(label)   | Colored badge for WARN      |
+| debug(label)  | Colored badge for DEBUG     |
+| done(label)   | Colored badge for DONE      |
+| critical(label)| Colored badge for CRITICAL |
+| trace(label)  | Colored badge for TRACE     |
+| fatal(label)  | Colored badge for FATAL     |
+| notice(label) | Colored badge for NOTICE    |
 
 ## Formats and rendering
 
