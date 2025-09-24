@@ -1,5 +1,11 @@
 # @protorians/logger
 
+## 0.0.5
+
+### Patch Changes
+
+- Add LoggerBadge (LBadge) class and fix bugs
+
 ## 0.0.4
 
 ### Patch Changes
