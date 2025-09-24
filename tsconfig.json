@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "allowJs": false,
+    "removeComments": true,
+    "declaration": false,
+    "preserveConstEnums": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "rootDir": "./source",
+    "baseUrl": ".",
+    "paths": {
+      "@/types/*": ["source/types/*"],
+      "@/utilities/*": ["source/utilities/*"],
+      "@/*": ["source/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "./source"
+  ]
+}
