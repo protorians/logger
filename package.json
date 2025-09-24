@@ -1,6 +1,6 @@
 {
   "name": "@protorians/logger",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Protorians Logger",
   "type": "module",
   "main": "./build/index.cjs",
@@ -17,6 +17,10 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "push:version": "pnpm changeset add && pnpm changeset version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/protorians/logger.git"
   },
   "engines": {
     "node": ">=22"
