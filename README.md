@@ -26,9 +26,9 @@ A minimal, typed logger for Node.js and ESM with timestamp formatting, colored l
 
 ## Installation
 
-- pnpm: pnpm add @protorians/logger
-- npm: npm i @protorians/logger
-- yarn: yarn add @protorians/logger
+- pnpm: ` pnpm add @protorians/logger `
+- npm: ` npm i @protorians/logger `
+- yarn: ` yarn add @protorians/logger `
 
 ## Overview
 
@@ -39,14 +39,18 @@ Logs also dispatch `@protorians/events-bus` events for advanced observability.
 ## Quick start
 
 - ESM:
+```typescript
 import { Logger } from "@protorians/logger";
 Logger.info("Starting up");
 Logger.warn("Missing config: %s", "PORT");
 Logger.error("Failure: %o", new Error("boom"));
+```
 
 - CJS:
+```typescript
 const { Logger } = require("@protorians/logger");
 Logger.debug("Hello");
+```
 
 ## API
 
