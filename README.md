@@ -8,6 +8,21 @@ A minimal, typed logger for Node.js and ESM with timestamp formatting, colored l
 - Exports: ESM and CJS (types included)
 - Dependencies: `@protorians/core`, `@protorians/events-bus`
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Overview](#overview)
+- [Quick start](#quick-start)
+- [API](#api)
+  - [Types](#types)
+  - [Class: Logger](#class-logger)
+  - [Example with an instance](#example-with-an-instance)
+  - [Disable colors or timestamp](#disable-colors-or-timestamp)
+- [Events Bus integration](#events-bus-integration)
+- [Formats and rendering](#formats-and-rendering)
+- [Best practices](#best-practices)
+- [License](#license)
+
 ## Installation
 
 - pnpm: pnpm add @protorians/logger
@@ -36,19 +51,25 @@ Logger.debug("Hello");
 
 ### Types
 
-- ILoggerOptions
-  - prefix?: string — prefix shown before the message
-  - timestampFormat?: TimestampEnum — timestamp format (default: `TimestampEnum.HH_MM_SS`)
-  - level?: LevelEnum — level used by the instance (default: `LevelEnum.INFO` in print)
-  - timestamp?: boolean — enable/disable timestamp (default: true)
-  - prefixSeparator?: string — separator between prefix and message (default: space)
-  - isInteractive?: boolean — free flag (not used in current formatting)
-  - isVerbose?: boolean — free flag (not used in current formatting)
-  - isColorEnabled?: boolean — enable/disable colors (default: auto based on TTY)
+Properties (ILoggerOptions):
 
-- Enums from `@protorians/core`
-  - LevelEnum: NORMAL, ERROR, CRITICAL, WARN, NOTICE, INFO, DEBUG, FATAL, TRACE, DONE, SILENT
-  - TimestampEnum: e.g. HH_MM_SS (used by default)
+| Property           | Type              | Default                        | Description                                                   |
+|--------------------|-------------------|--------------------------------|---------------------------------------------------------------|
+| prefix             | string            | —                              | Prefix shown before the message                               |
+| timestampFormat    | TimestampEnum     | TimestampEnum.HH_MM_SS         | Timestamp format                                              |
+| level              | LevelEnum         | LevelEnum.INFO (for print)     | Level used by the instance when printing                      |
+| timestamp          | boolean           | true                           | Enable/disable timestamp                                      |
+| prefixSeparator    | string            | " " (space)                   | Separator between prefix and message                          |
+| isInteractive      | boolean           | —                              | Free flag (not used in current formatting)                    |
+| isVerbose          | boolean           | —                              | Free flag (not used in current formatting)                    |
+| isColorEnabled     | boolean           | auto (based on TTY)            | Enable/disable colors                                         |
+
+Enums from `@protorians/core`:
+
+| Enum           | Values                                                                                   | Notes                   |
+|----------------|-------------------------------------------------------------------------------------------|-------------------------|
+| LevelEnum      | NORMAL, ERROR, CRITICAL, WARN, NOTICE, INFO, DEBUG, FATAL, TRACE, DONE, SILENT           | Used for levels         |
+| TimestampEnum  | e.g. HH_MM_SS                                                                             | Default is HH_MM_SS     |
 
 ### Class: Logger
 
@@ -65,22 +86,28 @@ Logger.debug("Hello");
     - prefix + prefixSeparator
   - Emits an event via `@protorians/events-bus` (see below).
 
-- Convenience static methods (create a `Logger` with default options and the given level, then call `print`):
-  - Logger.log(message, ...args) → LevelEnum.NORMAL
-  - Logger.notice(message, ...args) → LevelEnum.NOTICE
-  - Logger.error(message, ...args) → LevelEnum.ERROR
-  - Logger.warn(message, ...args) → LevelEnum.WARN
-  - Logger.debug(message, ...args) → LevelEnum.DEBUG
-  - Logger.trace(message, ...args) → LevelEnum.TRACE
-  - Logger.fatal(message, ...args) → LevelEnum.FATAL
-  - Logger.critical(message, ...args) → LevelEnum.CRITICAL
-  - Logger.info(message, ...args) → LevelEnum.INFO
-  - Logger.success(message, ...args) → LevelEnum.DONE
+- Convenience static methods (each creates a `Logger` with defaults, sets the level, and calls `print`):
 
-Defaults used by these static methods:
-- timestamp: true
-- timestampFormat: TimestampEnum.HH_MM_SS
-- isColorEnabled: auto based on TTY
+| Method                      | LevelEnum      | Description                              |
+|-----------------------------|----------------|------------------------------------------|
+| Logger.log(msg, ...args)    | NORMAL         | Standard log                             |
+| Logger.notice(msg, ...args) | NOTICE         | Notice-level log                         |
+| Logger.error(msg, ...args)  | ERROR          | Error log (stderr)                       |
+| Logger.warn(msg, ...args)   | WARN           | Warning log                              |
+| Logger.debug(msg, ...args)  | DEBUG          | Debug information                        |
+| Logger.trace(msg, ...args)  | TRACE          | Trace-level details                      |
+| Logger.fatal(msg, ...args)  | FATAL          | Fatal/exit-level errors                  |
+| Logger.critical(msg, ...args)| CRITICAL      | Critical errors                          |
+| Logger.info(msg, ...args)   | INFO           | Informational message                    |
+| Logger.success(msg, ...args)| DONE           | Success message                          |
+
+Defaults used by these static helpers:
+
+| Option            | Default                     |
+|-------------------|-----------------------------|
+| timestamp         | true                        |
+| timestampFormat   | TimestampEnum.HH_MM_SS      |
+| isColorEnabled    | auto (based on TTY)         |
 
 ### Example with an instance
 
@@ -116,16 +143,18 @@ Every log emits an event via `EventBus.dispatch(key, payload)` where `payload` i
 
 The `key` depends on the level:
 
-- NORMAL → EventBusEnum.LOG
-- ERROR → EventBusEnum.LOG_ERROR
-- CRITICAL → EventBusEnum.LOG_CRITICAL
-- WARN → EventBusEnum.LOG_WARNING
-- NOTICE → EventBusEnum.LOG_NOTICE
-- INFO → EventBusEnum.LOG_INFO
-- DEBUG → EventBusEnum.LOG_DEBUG
-- FATAL → EventBusEnum.LOG_EMERGENCY
-- TRACE → EventBusEnum.LOG_TRACE
-- SILENT → EventBusEnum.LOG_SILENT
+| LevelEnum | EventBusEnum key       |
+|-----------|-------------------------|
+| NORMAL    | LOG                     |
+| ERROR     | LOG_ERROR               |
+| CRITICAL  | LOG_CRITICAL            |
+| WARN      | LOG_WARNING             |
+| NOTICE    | LOG_NOTICE              |
+| INFO      | LOG_INFO                |
+| DEBUG     | LOG_DEBUG               |
+| FATAL     | LOG_EMERGENCY           |
+| TRACE     | LOG_TRACE               |
+| SILENT    | LOG_SILENT              |
 
 This lets you centralize or redirect logs to other targets (file, telemetry, etc.) by subscribing to the `@protorians/events-bus` package event bus.
 
