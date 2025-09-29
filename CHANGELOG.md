@@ -1,5 +1,11 @@
 # @protorians/logger
 
+## 0.0.8
+
+### Patch Changes
+
+- Bump `@protorians/core` to v0.6.11 in `package.json` and update lockfile.
+
 ## 0.0.7
 
 ### Patch Changes

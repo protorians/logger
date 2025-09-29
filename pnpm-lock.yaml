@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@protorians/core':
-        specifier: ^0.6.10
-        version: 0.6.10
+        specifier: ^0.6.11
+        version: 0.6.11
       '@protorians/events-bus':
         specifier: ^0.0.1
         version: 0.0.1
@@ -293,8 +293,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@protorians/core@0.6.10':
-    resolution: {integrity: sha512-MnfJD24W0f6iLX7nfLRQZPfiZlAEQuUGPiDfbgbpDisKzC5W+kBM6YrDCHPxeXUMghdW/TJeuQ/aDGMJpKr+1Q==}
+  '@protorians/core@0.6.11':
+    resolution: {integrity: sha512-keyFVI1Q0IjzsDcRrpheZ/XkInTrW7lMvKUCDpiySTfpJivx/xky9lsel/u58yD4AMJRUNB3wPb+l2FpKYBzOw==}
 
   '@protorians/events-bus@0.0.1':
     resolution: {integrity: sha512-NlKeKDSl83nFQeUTp2/Q44L1jQNirIsPETrgnEWYc1PQ2SU/P6Lu/3Gyk2wmzHJMXBl61h2POO8m4dfT/jMdkw==}
@@ -1285,7 +1285,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@protorians/core@0.6.10': {}
+  '@protorians/core@0.6.11': {}
 
   '@protorians/events-bus@0.0.1': {}
 
