@@ -1,5 +1,12 @@
 import {EventBus, EventBusEnum, type IEventPayload} from "@protorians/events-bus";
-import {consoleColorizeLevel, consoleForLevel, consoleFormatTimestamp, consoleToUpperLevel, LevelEnum, TimestampEnum} from "@protorians/core";
+import {
+    consoleColorizeLevel,
+    consoleForLevel,
+    consoleFormatTimestamp,
+    consoleToUpperLevel,
+    LevelEnum,
+    TimestampEnum
+} from "@protorians/core";
 import type {ILoggerOptions} from "@/types";
 
 /**
@@ -21,7 +28,9 @@ export class Logger {
         const tsFmt: TimestampEnum = this.options.timestampFormat ?? TimestampEnum.HH_MM_SS;
         const prefixSep = this.options.prefixSeparator ?? " ";
 
-        const parts: string[] = [];
+        const parts: string[] = [
+            consoleColorizeLevel(" ", level, useColor)
+        ];
 
         if (tsEnabled) {
             const ts = consoleFormatTimestamp(new Date(), tsFmt);

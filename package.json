@@ -1,6 +1,6 @@
 {
   "name": "@protorians/logger",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Protorians Logger",
   "type": "module",
   "main": "./build/index.cjs",

@@ -1,5 +1,11 @@
 # @protorians/logger
 
+## 0.0.7
+
+### Patch Changes
+
+- Refactor `logger.ts` to simplify logging parts generation and enhance readability.
+
 ## 0.0.6
 
 ### Patch Changes
