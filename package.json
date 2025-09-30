@@ -1,6 +1,6 @@
 {
   "name": "@protorians/logger",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Protorians Logger",
   "type": "module",
   "main": "./build/index.cjs",
@@ -35,7 +35,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@protorians/core": "^0.6.12",
+    "@protorians/core": "^0.6.13",
     "@protorians/events-bus": "^0.0.1"
   }
 }

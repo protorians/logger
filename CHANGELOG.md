@@ -1,5 +1,11 @@
 # @protorians/logger
 
+## 0.0.10
+
+### Patch Changes
+
+- Bump `@protorians/core` to v0.6.13
+
 ## 0.0.9
 
 ### Patch Changes
